@@ -56,6 +56,11 @@ public class Main {
         EMPLOYEE_BOOK.printExternalEmployees(EMPLOYEE_BOOK.getEmployeesWithGreaterThanSalaryByNumber(480));
 
         Employee employee = EMPLOYEE_BOOK.getEmployeeByFullName("Сотрудник 1");
+        if (Objects.isNull(employee)) {
+            System.out.println("Не найден сотрудник - Сотрудник 1");
+            return;
+        }
+
         System.out.printf(
                 "%n ФИО сотрудника в обработке: %s",
                 employee.getFullName()
