@@ -4,58 +4,58 @@ public class Main {
     private static final int DEPARTMENT_SIZE = 5;
     private static final int EMPLOYEES_SIZE = 10;
 
-    private static final EmployeeBook employeesBook = new EmployeeBook();
+    private static final EmployeeBook EMPLOYEE_BOOK = new EmployeeBook();
 
 
     public static void main(String[] args) throws Exception {
 
         Main.initialEmployees();
 
-        System.out.println(Arrays.toString(employeesBook.getEmployees()));
-        System.out.printf("Затраты на зарплаты в месяц: %s%n", employeesBook.getAmountSalaryEmployees());
-        System.out.printf("Сотрудник с минимальной зарплатой: %s%n", employeesBook.getEmployeeWithMinimumSalary());
-        System.out.printf("Сотрудник с максимальной зарплатой: %s%n", employeesBook.getEmployeeWithMaximumSalary());
-        System.out.printf("Среднее значение зарплат: %s%n", employeesBook.getAvgSalary());
-        System.out.printf("Ф. И. О. всех сотрудников: %s%n", Arrays.toString(employeesBook.getFullNameEmployees()));
+        System.out.println(Arrays.toString(EMPLOYEE_BOOK.getEmployees()));
+        System.out.printf("Затраты на зарплаты в месяц: %s%n", EMPLOYEE_BOOK.getAmountSalaryEmployees());
+        System.out.printf("Сотрудник с минимальной зарплатой: %s%n", EMPLOYEE_BOOK.getEmployeeWithMinimumSalary());
+        System.out.printf("Сотрудник с максимальной зарплатой: %s%n", EMPLOYEE_BOOK.getEmployeeWithMaximumSalary());
+        System.out.printf("Среднее значение зарплат: %s%n", EMPLOYEE_BOOK.getAvgSalary());
+        System.out.printf("Ф. И. О. всех сотрудников: %s%n", Arrays.toString(EMPLOYEE_BOOK.getFullNameEmployees()));
 
-        employeesBook.indexSalaryByPercentage(.25);
+        EMPLOYEE_BOOK.indexSalaryByPercentage(.25);
         System.out.println();
-        System.out.printf("Сотрудник с минимальной зарплатой: %s%n", employeesBook.getEmployeeWithMinimumSalary());
-        System.out.printf("Сотрудник с максимальной зарплатой: %s%n", employeesBook.getEmployeeWithMaximumSalary());
+        System.out.printf("Сотрудник с минимальной зарплатой: %s%n", EMPLOYEE_BOOK.getEmployeeWithMinimumSalary());
+        System.out.printf("Сотрудник с максимальной зарплатой: %s%n", EMPLOYEE_BOOK.getEmployeeWithMaximumSalary());
 
         System.out.println("Повышенная сложность");
         int workDepartment = 1;
         System.out.printf(
                 "Сотрудник с минимальной зарплатой: %s%n",
-                employeesBook.getEmployeeWithMinimumSalaryByDepartment(workDepartment)
+                EMPLOYEE_BOOK.getEmployeeWithMinimumSalaryByDepartment(workDepartment)
         );
         System.out.printf(
                 "Сотрудник с максимальной зарплатой: %s%n",
-                employeesBook.getEmployeeWithMaximumSalaryByDepartment(workDepartment)
+                EMPLOYEE_BOOK.getEmployeeWithMaximumSalaryByDepartment(workDepartment)
         );
 
         System.out.printf(
                 "Затраты на зарплаты в месяц: %s, по департаменту №%s%n",
-                employeesBook.getAmountSalaryEmployeesByDepartment(workDepartment),
+                EMPLOYEE_BOOK.getAmountSalaryEmployeesByDepartment(workDepartment),
                 workDepartment
         );
 
         System.out.printf(
                 "Среднее значение зарплат: %s, по департаменту №%s%n",
-                employeesBook.getAvgSalary(workDepartment),
+                EMPLOYEE_BOOK.getAvgSalary(workDepartment),
                 workDepartment
         );
 
         float indexPercent = .5f;
-        employeesBook.indexSalaryDepartmentByPercentage(workDepartment, indexPercent);
-        employeesBook.printDepartmentEmployees(employeesBook.getEmployeesByDepartment(workDepartment));
+        EMPLOYEE_BOOK.indexSalaryDepartmentByPercentage(workDepartment, indexPercent);
+        EMPLOYEE_BOOK.printDepartmentEmployees(EMPLOYEE_BOOK.getEmployeesByDepartment(workDepartment));
 
         System.out.println();
 
-        employeesBook.printExternalEmployees(employeesBook.getEmployeesWithLessSalaryByNumber(480));
-        employeesBook.printExternalEmployees(employeesBook.getEmployeesWithGreaterThanSalaryByNumber(480));
+        EMPLOYEE_BOOK.printExternalEmployees(EMPLOYEE_BOOK.getEmployeesWithLessSalaryByNumber(480));
+        EMPLOYEE_BOOK.printExternalEmployees(EMPLOYEE_BOOK.getEmployeesWithGreaterThanSalaryByNumber(480));
 
-        Employee employee = employeesBook.getEmployeeByFullName("Сотрудник 1");
+        Employee employee = EMPLOYEE_BOOK.getEmployeeByFullName("Сотрудник 1");
         System.out.printf(
                 "%n ФИО сотрудника в обработке: %s",
                 employee.getFullName()
@@ -71,11 +71,11 @@ public class Main {
 
         double newSalary = 10;
         int newDepartmentNum = 10;
-        employeesBook.changeSalaryEmployeeByFullName(employee.getFullName(), newSalary);
-        employeesBook.changeDepartmentEmployeeByFullName(employee.getFullName(), new Department(newDepartmentNum));
+        EMPLOYEE_BOOK.changeSalaryEmployeeByFullName(employee.getFullName(), newSalary);
+        EMPLOYEE_BOOK.changeDepartmentEmployeeByFullName(employee.getFullName(), new Department(newDepartmentNum));
 
         // Добавим доп пользователя в отдел №10
-        employeesBook.add(
+        EMPLOYEE_BOOK.add(
                 new Employee(
                         String.format("Сотрудник %s", 101),
                         new Department(newDepartmentNum),
@@ -95,7 +95,7 @@ public class Main {
 
         System.out.println();
         System.out.println(
-                Arrays.toString(employeesBook.getEmployeeNamesByDepartment(newDepartmentNum))
+                Arrays.toString(EMPLOYEE_BOOK.getEmployeeNamesByDepartment(newDepartmentNum))
         );
     }
 
@@ -103,7 +103,7 @@ public class Main {
 
         for (int i = 0; i < EMPLOYEES_SIZE; i++) {
             int baseNum = i + 1;
-            employeesBook.add(new Employee(
+            EMPLOYEE_BOOK.add(new Employee(
                     String.format("Сотрудник %s", baseNum),
                     new Department(baseNum % Main.DEPARTMENT_SIZE),
                     baseNum * 100

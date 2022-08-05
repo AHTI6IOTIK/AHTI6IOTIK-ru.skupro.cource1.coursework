@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 
 public class EmployeeBook {
@@ -134,7 +135,7 @@ public class EmployeeBook {
     }
 
     public Employee[] getEmployeesByDepartment(Integer department) {
-        ArrayList<Employee> employeesDepartment = new ArrayList<>();
+        List<Employee> employeesDepartment = new ArrayList<>();
 
         for (int i = 0; i < this.size; i++) {
             if (department.equals(this.employees[i].getDepartment().getDepartmentNum())) {
@@ -221,7 +222,7 @@ public class EmployeeBook {
     }
 
     public Employee[] getEmployeesWithLessSalaryByNumber(double number) {
-        ArrayList<Employee> employees = new ArrayList<>();
+        List<Employee> employees = new ArrayList<>();
         for (int i = 0; i < this.size; i++) {
             if (this.employees[i].getSalary() < number) {
                 employees.add(this.employees[i]);
@@ -231,7 +232,7 @@ public class EmployeeBook {
     }
 
     public Employee[] getEmployeesWithGreaterThanSalaryByNumber(double number) {
-        ArrayList<Employee> employees = new ArrayList<>();
+        List<Employee> employees = new ArrayList<>();
         for (int i = 0; i < this.size; i++) {
             if (this.employees[i].getSalary() > number) {
                 employees.add(this.employees[i]);
